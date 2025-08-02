@@ -1,6 +1,48 @@
 # SPDX-FileCopyrightText: Siemens AG, 2020 Gaurav Mishra <mishra.gaurav@siemens.com>
 #
 # SPDX-License-Identifier: MIT
+[project]
+name = "snap-to-bucket"
+version = "1.0.4"
+description = "Move AWS EBS Snapshots to S3 Buckets"
+authors = [
+    {name = "Gaurav Mishra",email = "mishra.gaurav@siemens.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "boto3 (>=1.40.1,<2.0.0)",
+    "psutil (>=7.0.0,<8.0.0)",
+    "click (>=8.2.2,<9.0.0)"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Utilities",
+    "Topic :: System :: Recovery Tools"
+]
+
+[project.urls]
+homepage = "https://github.com/siemens/snap-to-bucket"
+repository = "https://github.com/siemens/snap-to-bucket"
+
+[tool.poetry]
+name = "snap-to-bucket"  # Workardound for cyclonedx-py
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^3.3.7"
+sphinx = "^8.2.3"
+
+[tool.poetry.scripts]
+snap2bucket = "snap_to_bucket.run:main"
+
 [build-system]
-# Minimum requirements for the build system to execute.
-requires = ["setuptools", "wheel"]  # PEP 508 specifications.
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

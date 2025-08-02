@@ -11,8 +11,8 @@ This tool allows to move data from AWS snapshots to S3 buckets.
 ```console
 $ git clone https://github.com/siemens/snap-to-bucket.git
 $ cd snap-to-bucket
-$ python3 -m pip install -U pipenv
-$ pipenv install --dev --editable .
+$ python3 -m pip install -U poetry
+$ poetry install
 ```
 
 #### PyPi
@@ -102,9 +102,9 @@ with AES-256.
 Make sure to tag the snapshots and run the script with root privileges as the
 script needs to mount/unmount volumes.
 
-- Runing from source
+- Running from source
 ```console
-# pipenv run snap2bucket --bucket <bucket>
+# poetry run snap2bucket --bucket <bucket>
 ```
 - Runing from install
 ```console
@@ -185,7 +185,7 @@ The script will store snapshots with following structure in S3:
 snap/<snapshot-name>/<snapshot-id>-<creation-time>-<now-time>.tar
 ```
 
-The snaphost name gets spaces ` ` and `/` replaces as `+` and `_` respectively.
+The snapshot name gets spaces ` ` and `/` replaces as `+` and `_` respectively.
 And the date/time is in ISO 8601 format.
 
 This section is controlled by `get_key_for_upload()` of `S3Handler`.
@@ -247,7 +247,7 @@ for i in /sys /proc /run /dev; do sudo umount /mnt/snapshot$i; done
 Run the script with `-r\--restore` flag and provide the bucket and the key.
 - Runing from source
 ```console
-# pipenv run snap2bucket --restore --bucket <bucket> --key <key>
+# poetry run snap2bucket --restore --bucket <bucket> --key <key>
 ```
 - Runing from install
 ```console

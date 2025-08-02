@@ -14,7 +14,7 @@ import sys
 import math
 
 import click
-from pkg_resources import get_distribution
+import importlib.metadata
 
 from snap_to_bucket.runner import SnapToBucket
 
@@ -70,7 +70,7 @@ class VolSize(click.ParamType):
 
 
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
-@click.version_option(get_distribution("snap_to_bucket").version)
+@click.version_option(importlib.metadata.version("snap_to_bucket"))
 @click.option("-v", "--verbose", help="increase output verbosity (-vvv for " +
               "more verbosity)", count=True, default=0)
 @click.option("--proxy", help="proxy to be used", default=None,
