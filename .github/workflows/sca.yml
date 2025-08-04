@@ -53,8 +53,9 @@ jobs:
 
       - name: Run FOSSology analysis
         id: fossology
-        uses: fossology/fossology-action@main
+        uses: GMishx/fossology-action@main
         with:
-          scan_mode: "scan-only-deps --sbom-path sbom.json"
-          scanners: "nomos ojo copyright keyword"
+          scan_mode: "scan-only-deps"
+          scanners: "nomos ojo copyright"
           report_format: "SPDX_JSON"
+          sbom_path: "sbom.json"
